@@ -1,0 +1,40 @@
+<h1>{{title}}</h1>
+<h3>Astronaut</h3>
+<hr/>
+
+<form [formGroup]="astronautForm" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+
+    <div class="form-group row">
+        <label class="control-label col-md-12">Astronaut Name</label>
+        <div class="col-md-4">
+            <input class="form-control" type="text" formControlName="astronautName" >
+        </div>
+        <span class="text-danger" *ngIf="astronautName.invalid && formDir.submitted">
+            Name is required.
+        </span>
+    </div>
+    
+
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="nationality">Nationality</label>
+        <div class="col-md-4">
+            <select class="form-control" data-val="true" formControlName="nationality">
+                <option value="">-- Select Nationality --</option>
+                <option *ngFor="let nation of nationalitiesList"
+                        value={{nation.nationality}}>
+                        {{nation.nationality}}
+                </option>
+            </select>
+        </div>
+        <span class="text-danger" *ngIf="nationality.invalid && formDir.submitted">
+            Nationality is required.
+        </span>
+    </div>
+
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-default">Save</button>
+        <button class="btn" (click)="cancel()">Cancel</button>
+    </div>
+
+</form>
