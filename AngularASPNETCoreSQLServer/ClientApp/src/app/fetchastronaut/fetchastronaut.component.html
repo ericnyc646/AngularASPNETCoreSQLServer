@@ -1,0 +1,28 @@
+<h1>Astronauts</h1>
+
+<p *ngIf="!astronautList"><em>Loading...</em></p>
+
+<p>
+    <a [routerLink]="['/register-astronaut']">Add New Astronaut</a>
+</p>
+
+<table class='table' *ngIf="astronautList">
+    <thead>
+        <tr>
+            <th>Astronaut Id</th>
+            <th>Astronuat Name</th>
+            <th>Nationality</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let astro of astronautList">
+            <td>{{ astro.astronautId }}</td>
+            <td>{{ astro.astronautName }}</td>
+            <td>{{ astro.nationality }}</td>
+            <td>  
+                    <a [routerLink]="['/astronaut/edit/', astro.astronautId]">Edit</a> |  
+                    <a [routerLink]="" (click)="delete(astro.astronautId)">Delete</a>  
+             </td>  
+        </tr>
+    </tbody>
+</table>

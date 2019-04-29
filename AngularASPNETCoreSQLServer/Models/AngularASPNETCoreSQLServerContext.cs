@@ -34,7 +34,7 @@ namespace AngularASPNETCoreSQLServer.Models
 
                 entity.Property(e => e.AstronautId).HasColumnName("AstronautID");
 
-                entity.Property(e => e.AstrunautName)
+                entity.Property(e => e.AstronautName)
                     .IsRequired()
                     .HasMaxLength(200)
                     .IsUnicode(false);
